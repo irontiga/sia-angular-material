@@ -32,13 +32,13 @@
 		</md-sidenav>
 		
 		<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-			<div ng-repeat="addon in ul.addonList | filter: { type: 'page' }" ng-if="ul.selected.id == addon.id">
-				<ng-include src=" './' + addon.folder + '/' + addon.file "></ng-include>
-				<!--<md-button ng-click="ul.selectAddon(it)" ng-class="{'selected' : it === ul.selected }">
-<md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-{{addon.type}}
-</md-button>-->
-			</div>
+			<md-toolbar layout="row" class="md-whiteframe-z1">
+				<h1>{{ ul.selected.name }}</h1>
+			</md-toolbar>
+			
+			<md-content flex  ng-repeat="addon in ul.addonList | filter: { type: 'page' }" ng-if="ul.selected.id == addon.id">
+				<webview id="{{ addon.id }}" src="{{ './' + addon.folder + '/' + addon.file }}"  autosize="on" minheight="732" nodeintegration></webview>
+			</md-content>
 		</div>
 
 		<script src="./bower_components/angular/angular.js"></script>
@@ -72,7 +72,8 @@
 					.accentPalette('pink');
 
 			});
-
+			
+			
 		</script>
 
 	</body>

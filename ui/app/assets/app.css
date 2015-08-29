@@ -28,13 +28,13 @@ md-list .md-button {
   text-align: left;
   width: 100%;
 }
-  md-list .md-button.selected {
-    color: #03a9f4;
-  }
+md-list ng-include .md-button.selected {
+	color: #03a9f4;
+}
 
-  md-sidenav  md-list {
-    padding: 0px 0px 8px 0px;
-  }
+md-sidenav  md-list {
+	padding: 0px 0px 8px 0px;
+}
 
 
 /* Primary content area */
@@ -114,8 +114,6 @@ md-toolbar h1 {
   vertical-align: middle;
   zoom:0.70;
   transform: translateZ(0);
-  -webkit-transform: scale(0.70);
-  -moz-transform:scale(0.70);
 }
 
 
@@ -127,4 +125,8 @@ span.name {
   font-weight: bold;
   font-size:1.1em;
   padding-left:5px;
+}
+
+.webview-container, .webview-container webview{
+	height:100%;
 }

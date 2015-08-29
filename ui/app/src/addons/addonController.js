@@ -14,7 +14,7 @@
    * @param avatarsService
    * @constructor
    */
-	function addonController( addonService, $mdSidenav, $mdBottomSheet, $log, $q) {
+	function addonController(addonService, $mdSidenav, $mdBottomSheet, $log, $q) {
 		var self = this;
 
 		self.selected     = null;
@@ -27,9 +27,9 @@
 
 		addonService
 			.loadAllAddons()
-			.then( function( addonList ) {
-			self.addonList    = [].concat(addonList);
-			self.selected = addonList[0];
+			.then(function(addonList) {
+			self.addonList = [].concat(addonList);
+			self.selected  = self.addonList[0];
 		});
 
 		// *********************************
@@ -55,13 +55,14 @@
 		function selectAddon (targetID) {
 			
 			function filterID(arr, value) {
-				for (var i=0, iLen=arr.length; i<iLen; i++) {
-
-					if (arr[i].id == value) return arr[i];
+				for (var i = 0, iLen = arr.length; i < iLen; i++) {
+					if (arr[i].id == value){
+						return arr[i];
+					}
 				}
 			}
-			var checkAddon = filterID(addonArray, targetID);
-			self.selected = checkAddon;
+			
+			self.selected = filterID(addonArray, targetID);
 			self.toggleList();
 			console.log(self.selected);
 		}
