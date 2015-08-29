@@ -1,0 +1,14 @@
+[
+	{
+		"id" : "irontigaOverviewNav",
+		"type": "sidenav",
+		"folder": "addons/overview",
+		"file": "overview.nav.html"
+	},
+	{
+		"id" : "irontigaOverviewPage",
+		"type": "page",
+		"folder": "addons/overview",
+		"file": "overview.page.html"
+	}
+]

@@ -1,0 +1,14 @@
+[
+	{
+		"id" : "irontigaWalletNav",
+		"type": "sidenav",
+		"folder" : "addons/wallet",
+		"file" : "wallet.nav.html"
+	},
+	{
+		"id" : "irontigaWalletPage",
+		"type": "page",
+		"folder" : "addons/wallet",
+		"file" : "wallet.page.html"
+	}
+]
