@@ -97,3 +97,6 @@ console.log(addonArray);
 for(var i = 0; i < addonArray.length; i++){
 	addonArray[i].basePath = './ui/app/addons/';
 }
+
+//Make ng-include include scripts
+

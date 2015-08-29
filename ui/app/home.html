@@ -7,7 +7,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-
+		
+		<script>
+			$ = require('./js/jquery-2.1.4.min.js');
+		</script>
+		
 		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
 		<link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
 		<link rel="stylesheet" href="assets/app.css"/>
@@ -40,7 +44,7 @@
 				<webview id="{{ addon.id }}" src="{{ './' + addon.folder + '/' + addon.file }}"  autosize="on" minheight="732" nodeintegration></webview>
 			</md-content>
 		</div>
-
+		
 		<script src="./bower_components/angular/angular.js"></script>
 		<script src="./bower_components/angular-animate/angular-animate.js"></script>
 		<script src="./bower_components/angular-aria/angular-aria.js"></script>
@@ -53,9 +57,43 @@
 		<script src="./src/addons/addonService.js"></script>
 
 		<script type="text/javascript">
+			
+			(function (ng) {
+				'use strict';
+				console.log('lazy');
+				var app = ng.module('ngLoadScript', []);
+
+				app.directive('script', function() {
+					return {
+						restrict: 'E',
+						scope: false,
+						link: function(scope, elem, attr) 
+						{
+							if (attr.type==='text/javascript-lazy') 
+							{
+								var s = document.createElement("script");
+								s.type = "text/javascript";                
+								var src = elem.attr('src');
+								if(src!==undefined)
+								{
+									s.src = src;
+								}
+								else
+								{
+									var code = elem.text();
+									s.text = code;
+								}
+								document.head.appendChild(s);
+								elem.remove();
+							}
+						}
+					};
+				});
+
+			}(angular));
 
 			angular
-				.module('addonsManager', ['ngMaterial', 'addons'])
+				.module('addonsManager', ['ngMaterial', 'addons','ngLoadScript'])
 				.config(function($mdThemingProvider, $mdIconProvider){
 
 				$mdIconProvider
@@ -72,6 +110,7 @@
 					.accentPalette('pink');
 
 			});
+			
 			
 			
 		</script>
